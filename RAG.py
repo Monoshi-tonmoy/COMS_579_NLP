@@ -13,7 +13,6 @@ from transformers import AutoTokenizer, AutoModel
 
 def query_model(query_text, vector_store):
     #todo: We have to query LLM models on the basis of our weaviate vector
-    
     '''# Encode the query text into embeddings using a Hugging Face model
     model_name = "sentence-transformers/all-MiniLM-l6-v2"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -88,6 +87,6 @@ if __name__ == "__main__":
     else:
         print("Please provide the path to the folder containing PDF files using --pdf_folder argument.")
 
-    query_text="Who lived in the small village of rolling hills?"
+    '''query_text="Who lived in the small village of rolling hills?"
     result = query_model(query_text, vector_store)
-    print(result)
+    print(result)'''

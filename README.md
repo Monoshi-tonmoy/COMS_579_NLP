@@ -26,3 +26,7 @@ This project aims to analyze documents, such as PDF files, using Weaviate for do
 ## To-Do
 
 1. **Implement Query Model Function**: Finish the `query_model()` function to utilize the Weaviate vector store for querying the LLM model. This involves retrieving embeddings from Weaviate and integrating them with the LLM for text generation.
+
+## Video Demonstration
+
+[Watch the video demonstration here](<https://drive.google.com/drive/folders/1KgwPmULG0o5s9hEQSHJrN_bqGFbt2mlu?usp=drive_link>)
