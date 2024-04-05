@@ -11,7 +11,7 @@ This project aims to analyze documents, such as PDF files, using Weaviate for do
 
 - **Hugging Face LLM**: You can choose any desired LLM model from Hugging Face's model hub. Update the `modelPath` variable in `storing_chunk()` function in `main.py` with the desired model path.
 
-4. Run the script: python main.py --pdf_file <path_to_pdf>
+4. Run the script: python RAG.py --pdf_file <path_to_pdf>
 
 
 ## Workflow

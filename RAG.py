@@ -12,7 +12,9 @@ from transformers import AutoTokenizer, AutoModel
 
 
 def query_model(query_text, vector_store):
-    # Encode the query text into embeddings using a Hugging Face model
+    #todo: We have to query LLM models on the basis of our weaviate vector
+    
+    '''# Encode the query text into embeddings using a Hugging Face model
     model_name = "sentence-transformers/all-MiniLM-l6-v2"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
@@ -21,19 +23,15 @@ def query_model(query_text, vector_store):
         outputs = model(**inputs)
         query_embeddings = outputs.last_hidden_state.mean(dim=1).squeeze().detach().cpu().numpy()
 
-    # Get embeddings of documents stored in Weaviate
     weaviate_embeddings = vector_store._embedding
 
-    # Calculate cosine similarity between query embeddings and document embeddings
     similarities = cosine_similarity([query_embeddings], weaviate_embeddings)
 
-    # Find the index of the most similar document
     most_similar_index = similarities.argmax()
 
-    # Retrieve the most similar document from Weaviate
     most_similar_document = vector_store.get_object(most_similar_index)
 
-    return most_similar_document
+    return most_similar_document'''
 
 
 
