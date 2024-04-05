@@ -4,14 +4,13 @@ This project aims to analyze documents, such as PDF files, using Weaviate for do
 
 ## Setup
 
-1. Clone the repository: git clone <repository_url>
-2. Install the required dependencies: pip install -r requirements.txt
+1. **Clone the repository:** `git clone <repository_url>`
+2. **Install the required dependencies:** `pip install -r requirements.txt`
 
-3. Download pre-trained models:
+3. **Download pre-trained models:**
+   - **Hugging Face LLM:** You can choose any desired LLM model from Hugging Face's model hub. Update the `modelPath` variable in `storing_chunk()` function in `main.py` with the desired model path.
 
-- **Hugging Face LLM**: You can choose any desired LLM model from Hugging Face's model hub. Update the `modelPath` variable in `storing_chunk()` function in `main.py` with the desired model path.
-
-4. Run the script: python RAG.py --pdf_file <path_to_pdf>
+4. **Run the script:** `python RAG.py --pdf_file <path_to_pdf>`
 
 
 ## Workflow
@@ -27,10 +26,3 @@ This project aims to analyze documents, such as PDF files, using Weaviate for do
 ## To-Do
 
 1. **Implement Query Model Function**: Finish the `query_model()` function to utilize the Weaviate vector store for querying the LLM model. This involves retrieving embeddings from Weaviate and integrating them with the LLM for text generation.
-
-2. **Refactor and Optimization**: Refactor the code for better modularity and optimization. Ensure proper error handling and logging.
-
-3. **Testing and Validation**: Test the functionality with different PDF files and verify the accuracy of text generation.
-
-4. **Documentation and Reporting**: Provide detailed documentation for each function and module. Report any issues encountered and steps for resolution.
-
