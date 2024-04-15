@@ -1,32 +1,57 @@
-# RAG
+# RAG for PDF Text Retrieval
 
-This project aims to analyze documents, such as PDF files, using Weaviate for document vectorization and a Language Model (LLM) from Hugging Face for text generation.
+## Overview
+This Python script provides a system for uploading, indexing, and querying text from PDF files. It utilizes various natural language processing (NLP) and machine learning (ML) techniques for text processing and retrieval.
 
-## Setup
+## Features
+- **PDF Upload:** Upload PDF files for text extraction and indexing.
+- **Text Indexing:** Index the text extracted from PDF files for efficient retrieval.
+- **Querying:** Query the indexed text to retrieve relevant information.
+- **Hugging Face Integration:** Utilizes Hugging Face models for text generation and question answering.
+- **Weaviate Integration:** Integrates with Weaviate for vector storage and retrieval.
 
-1. **Clone the repository:** `git clone <repository_url>`
-2. **Install the required dependencies:** `pip install -r requirements.txt`
+## Prerequisites
+- Python 3.x
+- Hugging Face API token (exported as an environment variable)
+- Hugging Face account with the CLI installed and logged in
+- Weaviate instance URL
 
-3. **Download pre-trained models:**
-   - **Hugging Face LLM:** You can choose any desired LLM model from Hugging Face's model hub. Update the `modelPath` variable in `storing_chunk()` function in `main.py` with the desired model path.
+## Installation
+1. Clone this repository to your local machine:
 
-4. **Run the script:** `python RAG.py --pdf_file <path_to_pdf>`
+    ```
+    git clone https://github.com/Monoshi-tonmoy/COMS_579_NLP.git
+    ```
+
+2. Install the required Python packages:
+
+    ```
+    pip install -r requirements.txt
+
+    ```
+
+3. Export your Hugging Face API token as an environment variable:
+
+    ```
+    export HF_TOKEN=your_hugging_face_token
+    ```
+
+## Usage
+1. Place your PDF files in the KB folder.
+
+2. Run the script with the `--pdf_folder` argument pointing to the folder containing the PDF files and the `--query_folder` argument pointing to the folder containing query files.
+
+    ```
+    python RAG.py --pdf_folder KB --query_folder Query
+    ```
+
+3. The script will extract text from the PDF files, index them, and perform queries based on the queries provided in the query files.
+
+4. The responses to the queries will be saved in a `Response` folder as `response.txt`.
+
+## Notes
+- Make sure you login to huggingface using your token.
+- Ensure that your Hugging Face API token is properly exported before running the script.
+- Modify the `WEAVIATE_URL` variable in the script to match your Weaviate instance URL.
 
 
-## Workflow
-
-1. **Upload PDF**: Use the `upload_pdf()` function to load a PDF file and extract its text.
-
-2. **Chunk Text**: Chunk the extracted text into smaller segments using the `Chunk_text()` function.
-
-3. **Store Chunks**: Store the text chunks in Weaviate for vectorization using the `storing_chunk()` function.
-
-4. **Query Model**: Implement the `query_model()` function to use the Weaviate vector store to query the LLM model for text generation.
-
-## To-Do
-
-1. **Implement Query Model Function**: Finish the `query_model()` function to utilize the Weaviate vector store for querying the LLM model. This involves retrieving embeddings from Weaviate and integrating them with the LLM for text generation.
-
-## Video Demonstration
-
-[Watch the video demonstration here](<https://drive.google.com/drive/folders/1KgwPmULG0o5s9hEQSHJrN_bqGFbt2mlu?usp=drive_link>)
