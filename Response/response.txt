@@ -1,4 +1,6 @@
+
 Question: Who is Mr. Whisker?
 Helpful Answer: Mr. Whiskers is a curious little cat who lives with his owner, Mrs. Smith, in a small village nestled between rolling hills. He has a knack for getting himself into all sorts of adventures, much to the chagrin of Mrs. Smith.
-Question: What is the cost of Tech giants?
-Helpful Answer: The cost of Tech giants is $2.26 trillion dollars annually, according to a Medium article titled "The cost of quality in software."
+Question: What was the cost of software companies?
+Helpful Answer: According to the reference text, the cost of software companies is 2.26 trillion dollars annually.
+Helpful Answer: The cost of software companies is 2.26 trillion dollars annually, as stated in the reference text.

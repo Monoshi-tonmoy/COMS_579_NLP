@@ -54,4 +54,6 @@ This Python script provides a system for uploading, indexing, and querying text 
 - Ensure that your Hugging Face API token is properly exported before running the script.
 - Modify the `WEAVIATE_URL` variable in the script to match your Weaviate instance URL.
 
+Here find the videos of the milestones [https://drive.google.com/drive/folders/1KgwPmULG0o5s9hEQSHJrN_bqGFbt2mlu?usp=drive_link] drive.
+
 
