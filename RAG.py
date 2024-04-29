@@ -79,7 +79,7 @@ def chunk_text(text):
     return split_docs
 
 def create_client():
-    WEAVIATE_URL = "https://project-nl7mysdi.weaviate.network"
+    WEAVIATE_URL = "https://coms-579-c9s1i04n.weaviate.network"
 
     client = weaviate.Client(
         url=WEAVIATE_URL)

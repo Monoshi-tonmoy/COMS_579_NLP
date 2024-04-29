@@ -4,3 +4,7 @@ Helpful Answer: Mr. Whiskers is a curious little cat who lives with his owner, M
 Question: What was the cost of software companies?
 Helpful Answer: According to the reference text, the cost of software companies is 2.26 trillion dollars annually.
 Helpful Answer: The cost of software companies is 2.26 trillion dollars annually, as stated in the reference text.
+Question: Who is Mr. Whisker?
+Helpful Answer: Mr. Whisker is a cat.
+Question: What is the cost of Tech giants?
+Helpful Answer: The cost of tech giants is not explicitly stated in the given context. However, the text mentions the cost of quality in software, which is estimated to be $2.26 trillion dollars annually. This figure includes the costs of software failures, security breaches, and inefficiencies in software development. It is important to note that this figure does not specifically account for the costs of tech giants, as the text is focused on the broader context of software development.
