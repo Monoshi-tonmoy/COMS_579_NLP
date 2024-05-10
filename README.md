@@ -37,8 +37,9 @@ This Python script provides a system for uploading, indexing, and querying text 
     ```
 
 ## Usage
-1. Place your PDF files in the KB folder.
 
+### To run our project in the terminal, do the following steps:
+1. Place your PDF files in the KB folder.
 2. Run the script with the `--pdf_folder` argument pointing to the folder containing the PDF files and the `--query_folder` argument pointing to the folder containing query files.
 
     ```
@@ -46,16 +47,18 @@ This Python script provides a system for uploading, indexing, and querying text 
     ```
 
 3. The script will extract text from the PDF files, index them, and perform queries based on the queries provided in the query files.
-
 4. The responses to the queries will be saved in a `Response` folder as `response.txt`.
 
 
+### To run our project in the GUI, do the following steps:
+
 1. Open the console and goto Project Root
 2. Make sure you choose the appropriate environment (installing from requirements.txt)
-3. Run this command: streamlit run ui/main_console.py
+3. Run this command: **streamlit run ui/main_console.py**
 4. You can see the use interface. 
-5. If you find hard to understand, follow the video tutorial.
-6. Thanks for your patience.
+5. You can upload, edit or delete pdf; can write question & get answer; and also can reset everything using our GUI implemented using **streamlit** library.
+6. If you find hard to understand, follow the video tutorial.
+7. Thanks for your patience.
 
 ## Notes
 - Make sure you login to huggingface using your token.
