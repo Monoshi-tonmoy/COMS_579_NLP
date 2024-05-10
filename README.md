@@ -49,6 +49,14 @@ This Python script provides a system for uploading, indexing, and querying text 
 
 4. The responses to the queries will be saved in a `Response` folder as `response.txt`.
 
+
+1. Open the console and goto Project Root
+2. Make sure you choose the appropriate environment (installing from requirements.txt)
+3. Run this command: streamlit run ui/main_console.py
+4. You can see the use interface. 
+5. If you find hard to understand, follow the video tutorial.
+6. Thanks for your patience.
+
 ## Notes
 - Make sure you login to huggingface using your token.
 - Ensure that your Hugging Face API token is properly exported before running the script.
