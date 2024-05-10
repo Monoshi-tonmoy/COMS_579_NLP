@@ -1,6 +1,69 @@
+from RAG import chunk_text, create_client, create_embeddings, create_vector_store, get_HF_Token, get_llm, get_model, get_pipeline, get_retriveQA, process_response, upload_pdf, write_response
 import streamlit as st
 import time
 import os
+
+
+
+
+
+
+## Backend code
+
+def get_response(str_ques):
+
+    pdf_files = [f for f in os.listdir("../KB/") if f.endswith('.pdf')]
+    all_text=[]
+    for pdf_file in pdf_files:
+        pdf_path = os.path.join("../KB/", pdf_file)
+        text = upload_pdf(pdf_path)
+        if text:
+            text = upload_pdf(pdf_path)
+            all_text.extend(text)
+            chunked=chunk_text(text)
+            print(f"PDF {pdf_file} indexed successfully.")
+        else:
+            print(f"Failed to process PDF {pdf_file}.")
+                
+                  
+    client=create_client()
+    embeddings=create_embeddings()
+    
+    vector_database=create_vector_store(client, embeddings, all_text)
+
+    token=get_HF_Token()
+    model, tokenizer= get_model(token)
+    
+    
+    pipeline_obj=get_pipeline(model, tokenizer)
+    llm=get_llm(pipeline_obj)
+    
+    retrival_chain=get_retriveQA(llm, vector_database)
+    
+    truncated_response=[]
+    #query=get_query(args)
+
+    #for i in range(len(query)):
+    response=get_response(retrival_chain, str_ques, vector_database)
+    process_response(response, truncated_response)
+
+    return truncated_response
+
+## Backend code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 st.title('RAG for PDF Text Retrieval')
@@ -70,11 +133,12 @@ st.subheader("Enter Your Query Here:")
 question = st.text_input("Your questions:", value=st.session_state['question'], key='question')
 
 if st.button('Get Answer'):
-    with st.spinner('Processing your request...'):
-        time.sleep(10)
+    
+    # with st.spinner('Processing your request...'):
+    #     time.sleep(2)
 
     st.subheader("Here is the Answer of Your Query:")
-    answer = "This is a placeholder answer for the question: " + question
+    answer = get_response(question)
     st.text_area("Answer", answer, height=300)
 
 st.write("")

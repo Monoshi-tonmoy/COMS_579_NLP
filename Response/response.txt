@@ -8,3 +8,7 @@ Question: Who is Mr. Whisker?
 Helpful Answer: Mr. Whisker is a cat.
 Question: What is the cost of Tech giants?
 Helpful Answer: The cost of tech giants is not explicitly stated in the given context. However, the text mentions the cost of quality in software, which is estimated to be $2.26 trillion dollars annually. This figure includes the costs of software failures, security breaches, and inefficiencies in software development. It is important to note that this figure does not specifically account for the costs of tech giants, as the text is focused on the broader context of software development.
+Question: Who is Mr. Whisker?
+Helpful Answer: Mr. Whisker is a curious little cat who lives with his owner, Mrs. Smith, in a small village nestled between rolling hills. He has a knack for getting himself into all sorts of adventures, much to the chagrin of Mrs. Smith.
+Question: What is the cost of Tech giants?
+Helpful Answer: Based on the context, the cost of tech giants is not explicitly mentioned. However, according to the reference provided, the cost of quality in software development is estimated to be $2.26 trillion annually. It is possible that this cost includes the expenses of tech giants, but without more information, it is impossible to determine the specific cost of tech giants.

@@ -111,14 +111,16 @@ def process_response(response, all_response):
         elif response_lines[i].startswith('Helpful Answer:'):
             all_response.append(response_lines[i])
             
-def get_query(args):
+'''def get_query(args):
     txt_files = [f for f in os.listdir(args.query_folder) if f.endswith('.txt')]
     
     for txt in txt_files:
         query_path = os.path.join(args.query_folder, txt)
         with open(query_path) as file:
             query=file.readlines()
-    return query
+    return query'''
+
+    
             
 def write_response(truncated_response):
     response_file_path = "Response/response.txt"
@@ -129,50 +131,51 @@ def write_response(truncated_response):
             file.write(line + "\n")
             
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Upload and index PDF files")
-    parser.add_argument("--pdf_folder", type=str, help="Path to the folder containing PDF files")
-    parser.add_argument("--query_folder", type=str, help="Path to Query Folder")
-    args = parser.parse_args()
+# if __name__ == "__main__":
+#     parser = argparse.ArgumentParser(description="Upload and index PDF files")
+#     parser.add_argument("--pdf_folder", type=str, help="Path to the folder containing PDF files")
+#     parser.add_argument("--query_folder", type=str, help="Path to Query Folder")
+#     args = parser.parse_args()
+#     question=""
 
-    if args.pdf_folder:
-        pdf_files = [f for f in os.listdir(args.pdf_folder) if f.endswith('.pdf')]
-        all_text=[]
-        for pdf_file in pdf_files:
-            pdf_path = os.path.join(args.pdf_folder, pdf_file)
-            text = upload_pdf(pdf_path)
-            if text:
-                text = upload_pdf(pdf_path)
-                all_text.extend(text)
-                chunked=chunk_text(text)
-                print(f"PDF {pdf_file} indexed successfully.")
-            else:
-                print(f"Failed to process PDF {pdf_file}.")
-    else:
-        print("Please provide the path to the folder containing PDF files using --pdf_folder argument.")
+#     if args.pdf_folder:
+#         pdf_files = [f for f in os.listdir(args.pdf_folder) if f.endswith('.pdf')]
+#         all_text=[]
+#         for pdf_file in pdf_files:
+#             pdf_path = os.path.join(args.pdf_folder, pdf_file)
+#             text = upload_pdf(pdf_path)
+#             if text:
+#                 text = upload_pdf(pdf_path)
+#                 all_text.extend(text)
+#                 chunked=chunk_text(text)
+#                 print(f"PDF {pdf_file} indexed successfully.")
+#             else:
+#                 print(f"Failed to process PDF {pdf_file}.")
+#     else:
+#         print("Please provide the path to the folder containing PDF files using --pdf_folder argument.")
         
-    client=create_client()
-    embeddings=create_embeddings()
+#     client=create_client()
+#     embeddings=create_embeddings()
     
-    vector_database=create_vector_store(client, embeddings, all_text)
+#     vector_database=create_vector_store(client, embeddings, all_text)
 
-    token=get_HF_Token()
-    model, tokenizer= get_model(token)
+#     token=get_HF_Token()
+#     model, tokenizer= get_model(token)
     
     
-    pipeline_obj=get_pipeline(model, tokenizer)
-    llm=get_llm(pipeline_obj)
+#     pipeline_obj=get_pipeline(model, tokenizer)
+#     llm=get_llm(pipeline_obj)
     
-    retrival_chain=get_retriveQA(llm, vector_database)
+#     retrival_chain=get_retriveQA(llm, vector_database)
     
-    truncated_response=[]
-    query=get_query(args)
+#     truncated_response=[]
+#     #query=get_query(args)
 
-    for i in range(len(query)):
-        response=get_response(retrival_chain, query[i], vector_database)
-        process_response(response, truncated_response)
+#     #for i in range(len(query)):
+#     response=get_response(retrival_chain, question, vector_database)
+#     process_response(response, truncated_response)
 
-    write_response(truncated_response)
+#     write_response(truncated_response)
     
     
     
