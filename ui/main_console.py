@@ -124,9 +124,17 @@ def process_response(response, all_response):
             all_response.append(response_lines[i])
 
 
-## Backend code
 
-def get_response(str_ques):
+def get_helpful_answer(text):
+    for item in text:
+        if item.startswith('Helpful Answer:'):
+            helpful_answer = item.split('Helpful Answer: ')[1].strip()
+
+    return helpful_answer
+
+# ## Backend code
+
+def get_final_response(str_ques):
     pdf_files = [f for f in os.listdir("KB/") if f.endswith('.pdf')]
     all_text = []
     for pdf_file in pdf_files:
@@ -160,10 +168,10 @@ def get_response(str_ques):
     response = get_response(retrival_chain, str_ques, vector_database)
     process_response(response, truncated_response)
 
-    return truncated_response
+    return get_helpful_answer(truncated_response)
 
 
-## Backend code
+# ## Backend code
 
 
 ## Frontend started!
@@ -238,7 +246,7 @@ if st.button('Get Answer'):
     #     time.sleep(2)
 
     st.subheader("Here is the Answer of Your Query:")
-    answer = get_response(question)
+    answer = get_final_response(question)
     st.text_area("Answer", answer, height=300)
 
 st.write("")
