@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 # Title for the page
 st.title('RAG for PDF Text Retrieval')
@@ -19,22 +20,24 @@ def reset_form():
 
 # Button to process the question
 if st.button('Get Answer'):
+    # Simulating a popup-like notification
+    with st.spinner('Processing your request...'):
+        # Simulate a background task with a sleep delay
+        time.sleep(10)
     # You would replace this with the function call that processes the question
     # For example: answer = process_question(question)
     answer = "This is a placeholder answer for the question: " + question
     # Display the answer
     st.text_area("Answer", answer, height=300)
 
-
 st.write("")
 st.write("")
-
 
 # Button to reset the inputs and outputs, calling the reset_form function on click
 if st.button('Reset', on_click=reset_form):
     pass  # The actual reset logic is handled in the reset_form function
 
-# Write the CSS to the screen
+# Adjust button placement with custom CSS
 st.markdown("""
 <style>
 .stButton>button {
