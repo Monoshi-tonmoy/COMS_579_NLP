@@ -16,7 +16,7 @@ def get_HF_Token():
     return os.environ.get('HF_TOKEN')
 
 def get_model(token):
-    model_name = "meta-llama/Llama-2-13b-chat-hf"
+    model_name = "psmathur/orca_mini_3b"
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_compute_dtype=torch.bfloat16,
