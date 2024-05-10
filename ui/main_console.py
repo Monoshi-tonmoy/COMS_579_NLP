@@ -1,43 +1,88 @@
 import streamlit as st
 import time
+import os
 
-# Title for the page
+
 st.title('RAG for PDF Text Retrieval')
 
-# Initialize or reset the session state keys
-if 'question' not in st.session_state or 'reset' in st.session_state:
-    st.session_state['question'] = ""
-    st.session_state.pop('reset', None)  # Remove the reset flag if it exists
 
-# Text input for the question, linked to session state for dynamic update
-question = st.text_input("Enter your question here:", value=st.session_state['question'], key='question')
+def delete_file(filename):
+    try:
+        os.remove(os.path.join('KB', filename))
+        return True
+    except Exception as e:
+        return False
 
 
-# Function to handle reset
+def list_files():
+    if os.path.exists('KB'):
+        return os.listdir('KB')
+    return []
+
+
+files = list_files()
+if files:
+    st.subheader("PDF Files in the KB Folder are:")
+    for index, file in enumerate(files, start=1):
+        col1, col2 = st.columns([3, 1])
+        col1.write(f"{index}. {file}")
+        if col2.button(f"Delete {file}"):
+            if delete_file(file):
+                st.success(f"Deleted {file}")
+                st.experimental_rerun()
+            else:
+                st.error("Failed to delete file")
+
+
+def save_uploaded_file(uploaded_file):
+    try:
+        if not os.path.exists('KB'):
+            os.makedirs('KB')
+        with open(os.path.join('KB', uploaded_file.name), "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        return True
+    except Exception as e:
+        return False
+
+
 def reset_form():
-    st.session_state['reset'] = True
+    st.session_state['question'] = ""
 
 
-# Button to process the question
+if 'question' not in st.session_state:
+    st.session_state['question'] = ""
+
+st.subheader("Upload Your PDFs Here")
+uploaded_files = st.file_uploader("Choose PDF files:", type=['pdf'], accept_multiple_files=True, key="uploaded_files")
+
+if st.button('Upload PDF'):
+    if uploaded_files:
+        success = [save_uploaded_file(uploaded_file) for uploaded_file in uploaded_files]
+        if all(success):
+            st.success("All files have been uploaded successfully.")
+            st.experimental_rerun()  # Refresh to update the file list immediately
+        else:
+            st.error("Some files were not uploaded successfully.")
+    else:
+        st.error("No files selected.")
+
+st.subheader("Enter Your Query Here:")
+question = st.text_input("Your questions:", value=st.session_state['question'], key='question')
+
 if st.button('Get Answer'):
-    # Simulating a popup-like notification
     with st.spinner('Processing your request...'):
-        # Simulate a background task with a sleep delay
         time.sleep(10)
-    # You would replace this with the function call that processes the question
-    # For example: answer = process_question(question)
+
+    st.subheader("Here is the Answer of Your Query:")
     answer = "This is a placeholder answer for the question: " + question
-    # Display the answer
     st.text_area("Answer", answer, height=300)
 
 st.write("")
 st.write("")
 
-# Button to reset the inputs and outputs, calling the reset_form function on click
 if st.button('Reset', on_click=reset_form):
-    pass  # The actual reset logic is handled in the reset_form function
+    st.info('Please manually clear the file uploader by clicking the "X" beside each file.')
 
-# Adjust button placement with custom CSS
 st.markdown("""
 <style>
 .stButton>button {
