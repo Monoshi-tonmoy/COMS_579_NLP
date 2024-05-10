@@ -127,10 +127,10 @@ def process_response(response, all_response):
 ## Backend code
 
 def get_response(str_ques):
-    pdf_files = [f for f in os.listdir("../KB/") if f.endswith('.pdf')]
+    pdf_files = [f for f in os.listdir("KB/") if f.endswith('.pdf')]
     all_text = []
     for pdf_file in pdf_files:
-        pdf_path = os.path.join("../KB/", pdf_file)
+        pdf_path = os.path.join("KB/", pdf_file)
         text = upload_pdf(pdf_path)
         if text:
             text = upload_pdf(pdf_path)
